@@ -1,0 +1,21 @@
+<h2>
+  Quizzes
+  <% if can_administer? %>
+    <div class="pull-right">
+      <%= render partial: 'new_survey_modal' %>
+      <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#new-survey">
+        New Quiz
+      </button>
+    </div>
+  <% end %>
+</h2>
+<hr/>
+<table class="table table-striped">
+  <colgroup>
+    <col></col>
+    <col width="45%"></col>
+  </colgroup>
+  <tbody>
+    <%= render partial: "question_group", collection: @question_groups %>
+  </tbody>
+</table>

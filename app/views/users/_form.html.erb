@@ -1,0 +1,12 @@
+<%= simple_form_for @user do |f| %>
+
+  <div class="form-group">
+    <%= f.error_notification %>
+    <%= f.input :first_name, placeholder: 'First Name' %>
+    <%= f.input :last_name, placeholder: 'Last Name' %>
+    <%= f.input :email, placeholder: 'Email' %>
+    <%= f.input :password, placeholder: 'Password' %>
+  </div>
+
+  <%= f.submit 'Save', class: 'btn btn-primary'  %>
+<% end %>

@@ -1,0 +1,8 @@
+<%= simple_form_for question_group, defaults: { label: false }, html: { class: 'form-inline' } do |f| %>
+  <div class="form-group">
+    <%= f.error_notification %>
+    <%= f.input :name, placeholder: 'Survey Name' %>
+  </div>
+
+  <%= f.submit 'Save', class: 'btn btn-primary'  %>
+<% end %>

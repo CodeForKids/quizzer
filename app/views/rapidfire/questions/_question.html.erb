@@ -1,0 +1,15 @@
+<tr id="question_<%= question.id %>">
+  <td>
+    <%= question.question_text %>
+  </td>
+  <td>
+    <ul class="list-inline pull-right">
+      <li>
+        <%= link_to "Edit", [:edit, question.question_group, question], class: "btn btn-primary" %>
+      </li>
+      <li>
+        <%= link_to "Delete", [question.question_group, question], method: :delete, class: "btn btn-danger" %>
+      </li>
+    </ul>
+  </td>
+</tr>

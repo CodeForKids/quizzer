@@ -1,0 +1,18 @@
+<tr>
+  <td>
+    <img src="<%= gravatar(user.email, { size: 40 })%>" alt="" class="center-block img-circle img-responsive">
+  </td>
+  <td>
+    <%= link_to user.name, user_path(user) %>
+  </td>
+  <td>
+    <%= user.email %>
+  </td>
+  <td>
+    <ul class="list-inline pull-right">
+      <li>
+        <%= link_to "View User", user_path(user), class: "btn btn-primary" %>
+      </li>
+    </ul>
+  </td>
+</tr>

@@ -1,0 +1,18 @@
+<h2>
+  Users
+  <% if can_administer? %>
+    <div class="pull-right">
+      <%= link_to 'New User', new_user_path, class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</h2>
+<hr/>
+<table class="table table-striped">
+  <colgroup>
+    <col></col>
+    <col width="45%"></col>
+  </colgroup>
+  <tbody>
+    <%= render @users %>
+  </tbody>
+</table>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Code For Kids Quizzes</title>
+    <%= favicon_link_tag 'favicon.png' %>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,200italic' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body role="document">
+
+    <div class="container-fixed">
+    <div class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><%= image_tag 'logo-white-text.png', height: '20px' %></a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <%= render 'shared/nav' %>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="jumbotron text-center">
+        <h1>Code For Kids Quizzer</h1>
+        <p class="lead">Bringing the quizzes online.</p>
+        <p><%=link_to "Check out the quizzes", rapidfire.question_groups_path, class: 'btn btn-large btn-primary' %></p>
+    </div>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+
+</div> <!-- /container -->
+
+<% unless flash.empty? %>
+  <div id="toast"></div>
+  <ul id="toasts">
+    <% flash.each do |key, message| %>
+      <li data-toast-type="<%= key %>"><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+</body>
+</html>
