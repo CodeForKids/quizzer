@@ -13,8 +13,10 @@
                 <p><strong>Adminstrator</strong></p>
               <% end %>
 
+              <% if @user == current_user || can_administer? %>
+                <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary' %>
+              <% end %>
               <% if can_administer? %>
-                <%= link_to 'Edit User', edit_user_path(@user), class: 'btn btn-primary' %>
                 <%= link_to 'Delete User', user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete #{@user.name}'s user?" }, class: 'btn btn-danger' %>
               <% end %>
             </div><!--/col-->

@@ -4,7 +4,7 @@
     <%= f.error_notification %>
     <%= f.input :first_name, placeholder: 'First Name' %>
     <%= f.input :last_name, placeholder: 'Last Name' %>
-    <%= f.input :email, placeholder: 'Email' %>
+    <%= f.input :email, placeholder: 'Email', disabled: !can_administer? %>
     <%= f.input :password, placeholder: 'Password' %>
   </div>
 

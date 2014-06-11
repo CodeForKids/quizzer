@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   before_action :set_user, except: [:index, :new, :create, :me]
-  before_filter :authenticate, except: :me
+  before_filter :authenticate, except: [:edit, :update, :me]
+  before_filter :authenticate_current_user, only: [:edit, :update]
 
   def index
     @users = User.all
@@ -36,6 +37,7 @@ class UsersController < ApplicationController
 
   def update
     remove_blank_password
+    remove_email if current_user? && !can_administer?
     if @user.update_attributes(users_params)
       redirect_to users_path, notice: "Updated the user #{@user.name}"
     else
@@ -61,7 +63,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def remove_email
+    params[:user].delete(:email)
+  end
+
   def authenticate
     redirect_to root_path unless can_administer?
+  end
+
+  def authenticate_current_user
+    redirect_to root_path unless current_user?
+  end
+
+  def current_user?
+    current_user.id.to_i == params[:id].to_i
   end
 end
