@@ -31,7 +31,7 @@
     <div class="col-md-6">
       <h2>Quizzes Taken</h2>
       <% @answer_groups.each do |group| %>
-        <h3><%= link_to group.question_group.name, rapidfire.question_group_questions_path(group.question_group) %></h3>
+        <h3><%= link_to group.question_group.name, question_group_questions_path(group.question_group) %></h3>
         <table class="table table-hover">
           <tbody>
             <% group.answers.each do |answer| %>

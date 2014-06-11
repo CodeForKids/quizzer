@@ -2,14 +2,13 @@
   <% if current_user.nil? %>
     <li><a href="#contact">Help</a></li>
   <% else %>
-    <li><%=link_to "Quizzes", rapidfire.question_groups_path %></li>
-    <li><%=link_to "Your Profile", main_app.user_profile_path %></li>
+    <li><%=link_to "Quizzes", question_groups_path %></li>
+    <li><%=link_to "Your Profile", user_profile_path %></li>
     <% if can_administer? %>
       <li>
-        <%= link_to "Users", main_app.users_path %>
+        <%= link_to "Users", users_path %>
       </li>
     <% end %>
     <li><a href="#contact">Help</a></li>
-    <li><%= link_to "Logout", main_app.destroy_user_session_path, method: :delete %></li>
-  <% end %>
-</ul>
+    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+  <% end %></ul>
