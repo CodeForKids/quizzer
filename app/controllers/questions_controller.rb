@@ -51,6 +51,6 @@ class QuestionsController < ApplicationController
   end
 
   def index_location
-    rapidfire.question_group_questions_url(@question_group)
+    question_group_questions_url(@question_group)
   end
 end
