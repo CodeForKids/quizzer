@@ -1,2 +1,11 @@
-<%= f.input :answer_text, as: :check_boxes, collection: answer.question.options,
-  label: answer.question.question_text, checked: answer.answer_text.try(:split, ",") %>
+<%= render partial: "answers/errors", locals: {answer: answer} %>
+<%= render partial: "answers/title", locals: {answer: answer, form: f} %>
+
+<%= f.fields_for :answer_text do |af| %>
+  <%- answer.question.options.each do |option| %>
+    <%= af.label option do %>
+      <%= af.check_box nil, { id: nil, checked: checkbox_checked?(answer, option) }, option %>
+      <%= option %>
+    <% end %>
+  <% end %>
+<% end %>

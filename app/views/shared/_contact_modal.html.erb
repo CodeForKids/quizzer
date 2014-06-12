@@ -1,0 +1,48 @@
+<div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Need some help?</h4>
+      </div>
+      <div class="modal-body">
+        <form id="form5" name="form5" class="wufoo topLabel page" accept-charset="UTF-8" autocomplete="off" enctype="multipart/form-data" method="post" novalidate action="https://codeforkids.wufoo.eu/forms/s1nxnzb10b33k99/#public">
+
+          <input id="Field5" name="Field5" type="hidden" class="field text fn" value="<%= current_user.first_name %>" size="8" tabindex="1" />
+          <input id="Field6" name="Field6" type="hidden" class="field text ln" value="<%= current_user.last_name %>" size="14" tabindex="2" />
+          <input id="Field4" name="Field4" type="hidden" spellcheck="false" class="field text medium" value="<%= current_user.email%>" maxlength="255" tabindex="3" />
+
+            <div id="foli1" class="notranslate form-group">
+              <label class="desc" id="title1" for="Field1">What do you need help with?<span id="req_1" class="req">*</span></label>
+              <div>
+                <textarea id="Field1" name="Field1" class="field textarea medium form-control" spellcheck="true" rows="10" tabindex="4" onkeyup="" required></textarea>
+              </div>
+            </div>
+
+            <div id="foli2" class="notranslate form-group">
+              <label class="desc" id="title2" for="Field2">Attach screenshots of the what you need help with <small>(optional)</small></label>
+              <div>
+                <input id="Field2" name="Field2" type="file" class="field file form-control" size="12" tabindex="5" />
+              </div>
+            </div>
+
+            <div class="buttons form-group">
+              <div>
+                <input id="saveForm" name="saveForm" class="btTxt submit btn btn-primary"
+                  type="submit" value="Submit"
+               />
+              </div>
+            </div>
+
+            <div class="hide">
+              <label for="comment">Do Not Fill This Out</label>
+              <textarea name="comment" id="comment" rows="1" cols="1"></textarea>
+              <input type="hidden" id="idstamp" name="idstamp" value="cd3TV5xcswOkbayLiUhcpiiQJ+9hVOxb4/bF79QEn9w=" />
+            </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,2 +1,3 @@
-<%= f.input :answer_text, collection: answer.question.options, include_blank: true,
-  label: answer.question.question_text, prompt: "Please select" %>
+<%= render partial: "answers/errors", locals: {answer: answer} %>
+<%= render partial: "answers/title", locals: {answer: answer, form: f} %>
+<%= f.select :answer_text, answer.question.options, include_blank: true %>

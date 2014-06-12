@@ -1,5 +1,6 @@
 class QuestionGroupsController < ApplicationController
   before_filter :authenticate_administrator!, except: :index
+  before_action :set_question_group, only: [:destroy, :results, :assign_to_user]
   respond_to :html, :js
   respond_to :json, only: :results
 
@@ -21,26 +22,26 @@ class QuestionGroupsController < ApplicationController
   end
 
   def destroy
-    @question_group = Rapidfire::QuestionGroup.find(params[:id])
     @question_group.destroy
-
     respond_with(@question_group)
   end
 
-  def results
-    @question_group = Rapidfire::QuestionGroup.find(params[:id])
-    @question_group_results =
-      Rapidfire::QuestionGroupResults.new(question_group: @question_group).extract
-
-    respond_with(@question_group_results, root: false)
+  def assign_to_user
+    @user = User.find(params[:user_id])
+    if QuizAssignment.create({user: @user, question_group: @question_group})
+      redirect_to user_path(@user), notice: "Successfully assigned quiz to #{@user.name}"
+    else
+      flash[:error] = "Could not assign Quiz to #{@user.name}"
+      redirect_to user_path(@user)
+    end
   end
 
   private
   def question_group_params
-    if Rails::VERSION::MAJOR == 4
-      params.require(:question_group).permit(:name)
-    else
-      params[:question_group]
-    end
+    params.require(:question_group).permit(:name)
+  end
+
+  def set_question_group
+    @question_group = Rapidfire::QuestionGroup.find(params[:id])
   end
 end

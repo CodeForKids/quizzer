@@ -1,2 +1,3 @@
-<%= f.input :answer_text, as: :text, label: answer.question.question_text,
-  input_html: { rows: 5 } %>
+<%= render partial: "answers/errors", locals: {answer: answer} %>
+<%= render partial: "answers/title", locals: {answer: answer, form: f} %>
+<%= f.text_area :answer_text, :rows => 5 %>

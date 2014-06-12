@@ -1,10 +1,27 @@
+<% content_for :breadcrumb do %>
+    <ol class="breadcrumb">
+      <li><%= link_to current_user.name, root_path %></li>
+      <li>Taking a quiz named "<%= @question_group.name %>"</li>
+    </ol>
+<% end %>
+
 <h2>Please answer these Questions</h2>
 <hr/>
+
 <%= simple_form_for([@question_group, @answer_group_builder]) do |f| %>
-  <% @answer_group_builder.answers.each do |answer| %>
-    <%= f.simple_fields_for "#{answer.question.id}", answer do |answer_form| %>
-      <%= render_answer_form_helper(answer, answer_form) %>
-    <% end %>
+  <% @answer_group_builder.answers.each_with_index do |answer, index| %>
+    <div class="row-fluid">
+      <div class="span12">
+        <h4>Question <%= index+1 %></h4>
+        <%= f.simple_fields_for "#{answer.question.id}", answer do |answer_form| %>
+          <%= render_answer_form_helper(answer, answer_form) %>
+        <% end %>
+      </div>
+    </div>
+    <br><br>
   <% end %>
-  <%= f.submit "Save", class: "btn btn-primary btn-large" %>
+
+  <%= f.submit "Submit", class: "btn btn-primary btn-large" %>
+
 <% end %>
+<br>

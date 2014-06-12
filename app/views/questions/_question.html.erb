@@ -1,6 +1,6 @@
 <tr id="question_<%= question.id %>">
   <td>
-    <%= question.question_text %>
+    <%= question.question_text %> (<%= question.type.gsub('Rapidfire::Questions::','') %>)
   </td>
   <td>
     <ul class="list-inline pull-right">

@@ -1,0 +1,39 @@
+<% if current_user != @user %>
+  <% content_for :breadcrumb do %>
+      <ol class="breadcrumb">
+        <li><%= link_to 'Users', users_path %></li>
+        <li><%= link_to "#{@user.name}'s profile", user_path(@user)%></li>
+        <li>Assigning a quiz</li>
+      </ol>
+  <% end %>
+<% end %>
+
+<div class="col-md-12">
+  <% if @question_groups.size > 0 %>
+
+    <h2>Available Quizzes for <%= @user.name %></h2>
+    <table class="table table-hover">
+      <tbody>
+        <% @question_groups.each do |question_group| %>
+          <tr>
+            <td><b><%= question_group.name %></b></td>
+            <td><%= button_to 'Assign Quiz', assign_to_user_path(question_group, @user), method: :post, class: 'btn btn-primary' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  <% else %>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center">
+        <h2>There are no available quizzes to assign <%= @user.name %>.</h2>
+        <%= render partial: 'question_groups/new_survey_modal' %>
+        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#new-survey">
+          Create a Quiz
+        </button>
+      </div>
+    </div>
+
+  <% end %>
+</div>

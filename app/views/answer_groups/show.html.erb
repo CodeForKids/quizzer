@@ -1,0 +1,31 @@
+<% content_for :breadcrumb do %>
+    <ol class="breadcrumb">
+      <li><%= link_to current_user.name, root_path %></li>
+      <li><%= link_to "Quiz named \"#{@question_group.name}\"", new_question_group_answer_group_path(@question_group) %></li>
+      <li>Results</li>
+    </ol>
+<% end %>
+
+<h3>
+  Answers for <%= link_to @question_group.name, new_question_group_answer_group_path(@question_group) %>
+  (<%=@answer_group.percent_correct.round(1)%>%)
+  <%= link_to 'Try Again', new_question_group_answer_group_path(@question_group), class: 'btn btn-info btn-xs' %>
+</h3>
+<table class="table table-hover text-center">
+  <thead>
+    <td>Question</td>
+    <td>Your Answer</td>
+    <td>Correct?</td>
+    <td>Actual Answer</td>
+  </thead>
+  <tbody>
+    <% @answer_group.answers.each do |answer| %>
+     <tr>
+      <td><b><%= answer.question.question_text %></b></td>
+      <td><%= answer.answer_text %></td>
+      <td><% if answer.correct? %>√<%else%>X<% end %></td>
+      <td><%= answer.question.answer %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

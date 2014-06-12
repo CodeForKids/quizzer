@@ -10,12 +10,17 @@ class UsersController < ApplicationController
 
   def me
     @user = current_user
-    @answer_groups = Rapidfire::AnswerGroup.where(user: @user).includes(:question_group)
+    setup_user_profile(@user)
     render 'show'
   end
 
   def show
-    @answer_groups = Rapidfire::AnswerGroup.where(user: @user).includes(:question_group)
+    setup_user_profile(@user)
+  end
+
+  def assign_quiz
+    setup_user_profile(@user)
+    @question_groups =  Rapidfire::QuestionGroup.where.not(id: @completed.select(:question_group_id))
   end
 
   def new
@@ -56,6 +61,12 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :password, :email)
   end
 
+  def setup_user_profile(user)
+    @answer_groups = Rapidfire::AnswerGroup.where(user: user).includes(:question_group)
+    @quiz_assignments = QuizAssignment.where(user: user, completed: false).includes(:question_group)
+    @completed = QuizAssignment.where(user: user)
+  end
+
   def remove_blank_password
     if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
         params[:user].delete(:password)
@@ -76,6 +87,6 @@ class UsersController < ApplicationController
   end
 
   def current_user?
-    current_user.id.to_i == params[:id].to_i
+    current_user.id.to_i == params[:id].to_i || can_administer?
   end
 end

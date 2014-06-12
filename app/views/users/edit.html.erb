@@ -1,5 +1,18 @@
+<% content_for :breadcrumb do %>
+    <ol class="breadcrumb">
+      <li><%= link_to @user.name, user_path(@user) %></li>
+      <li>Editing Profile</li>
+    </ol>
+<% end %>
+
 <div class="page-header">
-  <h2>Editing <%= @user.name %></h2>
+  <h2>Edit your profile</h2>
 </div>
 
-<%= render partial: 'form' %>
+<div class="col-md-4">
+  <img src="<%= gravatar(@user.email, { size: 300 })%>" alt="" class="center-block img-circle img-responsive">
+</div>
+
+<div class="col-md-8">
+  <%= render partial: 'form' %>
+</div>

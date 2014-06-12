@@ -1,3 +1,12 @@
+<% if current_user != @user %>
+  <% content_for :breadcrumb do %>
+      <ol class="breadcrumb">
+        <li><%= link_to 'Users', users_path %></li>
+        <li>Viewing <%= @user.name %>'s profile</li>
+      </ol>
+  <% end %>
+<% end %>
+
 <div class="container">
   <div class="row">
 
@@ -14,38 +23,77 @@
               <% end %>
 
               <% if @user == current_user || can_administer? %>
-                <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary' %>
+                <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-default' %>
               <% end %>
               <% if can_administer? %>
                 <%= link_to 'Delete User', user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete #{@user.name}'s user?" }, class: 'btn btn-danger' %>
               <% end %>
-            </div><!--/col-->
+            </div>
 
             <div class="col-xs-12 col-sm-4 text-center">
                <img src="<%= gravatar(@user.email, { size: 150 })%>" alt="" class="center-block img-circle img-responsive">
-            </div><!--/col-->
+            </div>
+          </div>
 
-          </div><!--/row-->
-        </div><!--/panel-body-->
-      </div><!--/panel-->
+          <hr>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <h2>Quizzes Taken</h2>
+              <table class="table table-hover">
+                <thead>
+                  <td>Quiz</td>
+                  <td>Result</td>
+                  <td></td>
+                </thead>
+                <tbody>
+                  <% @answer_groups.each do |group| %>
+                    <% unless group.question_group.nil? %>
+                      <tr>
+                        <td><%= link_to group.question_group.name, question_group_answer_group_path(group.question_group, group) %></td>
+                        <td><%= group.percent_correct.round(1) %>%</td>
+                        <td class="text-center"><%= link_to 'Take the quiz again', new_question_group_answer_group_path(group.question_group), class: 'btn btn-info btn-xs' %></td>
+                      </tr>
+                    <% end %>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
     </div>
 
     <div class="col-md-6">
-      <h2>Quizzes Taken</h2>
-      <% @answer_groups.each do |group| %>
-        <h3><%= link_to group.question_group.name, question_group_questions_path(group.question_group) %></h3>
+        <h2>Quizzes Assigned
+        <% if can_administer? %><%= link_to 'Assign a Quiz', assign_quiz_path(@user), class: 'btn btn-default' %><% end %>
+        </h2>
+
+        <% if @quiz_assignments.size > 0 %>
+
         <table class="table table-hover">
+          <thead>
+            <td>Quiz</td>
+            <td></td>
+          </thead>
           <tbody>
-            <% group.answers.each do |answer| %>
-             <tr><td><b><%= answer.question.question_text %></b></td><td><%= answer.answer_text %></td></tr>
+            <% @quiz_assignments.each do |assignment| %>
+             <tr>
+              <td><b><%= link_to assignment.question_group.name, new_question_group_answer_group_path(assignment.question_group) %></b></td>
+              <td><%= link_to "Take this quiz", new_question_group_answer_group_path(assignment.question_group), class: "btn btn-primary btn-xs" %>
+              </td>
+            </tr>
             <% end %>
           </tbody>
         </table>
 
-      <% end %>
+        <% else %>
+          <h4 class="text-center"><%= image_tag 'favicon.png'%><br>You have no quizzes currently assigned to you! Congrats!</h4>
+        <% end %>
     </div>
-
-
 
   </div>
 </div>

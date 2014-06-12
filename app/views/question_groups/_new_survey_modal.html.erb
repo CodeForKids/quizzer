@@ -6,7 +6,7 @@
         <h4 class="modal-title">New Survey</h4>
       </div>
       <div class="modal-body">
-        <%= render partial: 'form', locals: {question_group: Rapidfire::QuestionGroup.new} %>
+        <%= render partial: 'question_groups/form', locals: {question_group: Rapidfire::QuestionGroup.new} %>
       </div>
     </div>
   </div>
