@@ -1,8 +1,7 @@
 <ul class="nav navbar-nav">
   <% if current_user.nil? %>
 
-    <li><a href="#contact">Help</a></li>
-    <li><%= link_to "Login", new_user_session_path %></li>
+    <li><a data-toggle="modal" data-target="#help">Help</a></li>
 
   <% else %>
     <li><%=link_to "Quizzes", question_groups_path %></li>
