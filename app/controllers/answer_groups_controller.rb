@@ -32,6 +32,7 @@ class AnswerGroupsController < ApplicationController
 
   def mark_question_group_as_complete
     quiz_assignment = QuizAssignment.find_or_create_by_answer_group_builder(@answer_group_builder)
+    quiz_assignment.source = 'manual' if quiz_assignment.source.blank?
     quiz_assignment.completed = true
     quiz_assignment.attempts += 1
     quiz_assignment.save

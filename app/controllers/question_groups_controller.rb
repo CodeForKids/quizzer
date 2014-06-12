@@ -28,7 +28,7 @@ class QuestionGroupsController < ApplicationController
 
   def assign_to_user
     @user = User.find(params[:user_id])
-    if QuizAssignment.create({user: @user, question_group: @question_group})
+    if QuizAssignment.create({user: @user, question_group: @question_group, source: 'Tutor'})
       redirect_to user_path(@user), notice: "Successfully assigned quiz to #{@user.name}"
     else
       flash[:error] = "Could not assign Quiz to #{@user.name}"
