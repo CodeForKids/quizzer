@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include ApplicationHelper
-  before_action :authenticate_session, :check_help
+  before_action :authenticate, :check_help
 
   def ping
     render inline: 'ACK'
@@ -9,11 +9,11 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def authenticate_administrator!
+  def authenticate_administrator
     redirect_to root_path unless can_administer?
   end
 
-  def authenticate_session
+  def authenticate
     redirect_to new_user_session_path unless current_user
   end
 

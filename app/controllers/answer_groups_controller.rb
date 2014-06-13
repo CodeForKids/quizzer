@@ -31,10 +31,10 @@ class AnswerGroupsController < ApplicationController
   end
 
   def mark_question_group_as_complete
-    quiz_assignment = QuizAssignment.find_or_create_by_answer_group_builder(@answer_group_builder)
-    quiz_assignment.source = 'manual' if quiz_assignment.source.blank?
-    quiz_assignment.completed = true
-    quiz_assignment.attempts += 1
-    quiz_assignment.save
+    @quiz_assignment = QuizAssignment.find_or_create_by(question_group: @answer_group_builder.question_group, user: current_user)
+    @quiz_assignment.source = 'manual' if @quiz_assignment.source.blank?
+    @quiz_assignment.completed = true
+    @quiz_assignment.attempts += 1
+    @quiz_assignment.save
   end
 end

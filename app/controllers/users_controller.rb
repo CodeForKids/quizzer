@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
-
-  before_action :set_user, except: [:index, :new, :create, :me]
-  before_filter :authenticate, except: [:edit, :update, :me]
+  before_filter :authenticate_administrator, except: [:edit, :update, :me]
   before_filter :authenticate_current_user, only: [:edit, :update]
+  before_filter :set_user, except: [:index, :new, :create, :me]
 
   def index
     @users = User.all
@@ -42,11 +41,21 @@ class UsersController < ApplicationController
 
   def update
     remove_blank_password
-    remove_email if current_user? && !can_administer?
+    remove_email if is_current_user? && !can_administer?
+
     if @user.update_attributes(users_params)
       redirect_to users_path, notice: "Updated the user #{@user.name}"
     else
       flash[:error] = "Issues updating user #{@user.name} #{@user.errors.full_messages.to_sentence}"
+      redirect_to users_path
+    end
+  end
+
+  def destroy
+    if @user.destroy
+      redirect_to users_path, notice: "Successfully deleted user"
+    else
+      flash[:error] = "Could not delete user #{@user.name}"
       redirect_to users_path
     end
   end
@@ -64,7 +73,7 @@ class UsersController < ApplicationController
   def setup_user_profile(user)
     @answer_groups = Rapidfire::AnswerGroup.where(user: user).includes(:question_group)
     @quiz_assignments = QuizAssignment.where(user: user, completed: false).includes(:question_group)
-    @completed = QuizAssignment.where(user: user)
+    @completed = QuizAssignment.where(user: user, completed: true)
   end
 
   def remove_blank_password
@@ -78,15 +87,11 @@ class UsersController < ApplicationController
     params[:user].delete(:email)
   end
 
-  def authenticate
-    redirect_to root_path unless can_administer?
-  end
-
   def authenticate_current_user
-    redirect_to root_path unless current_user?
+    redirect_to root_path unless is_current_user?
   end
 
-  def current_user?
+  def is_current_user?
     current_user.id.to_i == params[:id].to_i || can_administer?
   end
 end

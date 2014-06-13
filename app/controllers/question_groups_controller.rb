@@ -1,5 +1,5 @@
 class QuestionGroupsController < ApplicationController
-  before_filter :authenticate_administrator!, except: :index
+  before_filter :authenticate_administrator, except: :index
   before_action :set_question_group, only: [:destroy, :results, :assign_to_user]
   respond_to :html, :js
   respond_to :json, only: :results
@@ -7,11 +7,6 @@ class QuestionGroupsController < ApplicationController
   def index
     @question_groups = Rapidfire::QuestionGroup.all
     respond_with(@question_groups)
-  end
-
-  def new
-    @question_group = Rapidfire::QuestionGroup.new
-    respond_with(@question_group)
   end
 
   def create

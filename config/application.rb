@@ -20,7 +20,7 @@ module RapidfireDemo
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.to_prepare do
-      Devise::SessionsController.skip_before_filter :authenticate_session
+      Devise::SessionsController.skip_before_filter :authenticate
     end
   end
 end
