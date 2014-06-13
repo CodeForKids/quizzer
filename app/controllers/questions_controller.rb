@@ -16,11 +16,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    form_params = params[:question].merge(:question_group => @question_group)
-    @question = Rapidfire::QuestionForm.new(form_params)
-    @question.save
-
-    respond_with(@question, location: index_location)
+    create_or_update_form
   end
 
   def edit
@@ -29,11 +25,7 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    form_params = params[:question].merge(:question => @question)
-    @question = Rapidfire::QuestionForm.new(form_params)
-    @question.save
-
-    respond_with(@question, location: index_location)
+    create_or_update_form
   end
 
   def destroy
@@ -42,6 +34,15 @@ class QuestionsController < ApplicationController
   end
 
   private
+
+  def create_or_update_form
+    form_params = params[:question].merge(:question_group => @question_group)
+    @question = Rapidfire::QuestionForm.new(form_params)
+    @question.save
+
+    respond_with(@question, location: index_location)
+  end
+
   def find_question_group!
     @question_group = Rapidfire::QuestionGroup.find(params[:question_group_id])
   end
