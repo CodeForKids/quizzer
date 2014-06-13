@@ -51,7 +51,7 @@
                     <% unless group.question_group.nil? %>
                       <tr>
                         <td><%= link_to group.question_group.name, question_group_answer_group_path(group.question_group, group) %></td>
-                        <td><%= group.percent_correct.round(1) %>%</td>
+                        <td><%= group.percent_correct.round(1) rescue 'N/A' %>%</td>
                         <td class="text-center"><%= link_to 'Take the quiz again', new_question_group_answer_group_path(group.question_group), class: 'btn btn-info btn-xs' %></td>
                       </tr>
                     <% end %>
