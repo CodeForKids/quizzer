@@ -14,7 +14,7 @@
 
  @import "bootstrap";
 
-label { display: block !important; }
+.question label { display: block !important; }
 .navbar { margin-bottom: 0px; border-radius: 0px; }
 .jumbotron {
   background: image-url("bg-home-splash.jpg") top center;
