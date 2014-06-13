@@ -3,6 +3,7 @@ class AnswerGroupsController < ApplicationController
 
   def new
     @answer_group_builder = Rapidfire::AnswerGroupBuilder.new(answer_group_params)
+    @answer_group_builder.answers.shuffle!
   end
 
   def show
