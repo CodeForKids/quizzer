@@ -31,8 +31,11 @@ group :production do
 end
 
 group :test do
-  gem 'debugger'
   gem 'factory_girl_rails'
   gem "mocha", git: "git://github.com/freerange/mocha.git", require: false
   gem "codeclimate-test-reporter"
+end
+
+group :development, :test do
+  gem 'debugger'
 end
