@@ -21,6 +21,19 @@ module CodeForKidsQuizzer
     # config.i18n.default_locale = :de
     config.to_prepare do
       Devise::SessionsController.skip_before_filter :authenticate
+      Devise::PasswordsController.skip_before_filter :authenticate
     end
+
+    config.action_mailer.delivery_method = :smtp
+    ActionMailer::Base.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => "code-for-kids.com",
+    :user_name            => ENV['GMAIL_USER'],
+    :password             => ENV['GMAIL_PASS'],
+    :authentication       => "plain"
+      # :enable_starttls_auto => true # I don't have this, but it should work anyway
+    }
+
   end
 end
