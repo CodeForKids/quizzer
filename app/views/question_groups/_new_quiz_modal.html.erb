@@ -1,9 +1,9 @@
-<div class="modal fade" id="new-survey" tabindex="-1" role="dialog" aria-labelledby="new-survey" aria-hidden="true">
+<div class="modal fade" id="new-quiz" tabindex="-1" role="dialog" aria-labelledby="new-quiz" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">New Survey</h4>
+        <h4 class="modal-title">New Quiz</h4>
       </div>
       <div class="modal-body">
         <%= render partial: 'question_groups/form', locals: {question_group: Rapidfire::QuestionGroup.new} %>

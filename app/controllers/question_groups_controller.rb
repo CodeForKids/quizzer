@@ -1,6 +1,6 @@
 class QuestionGroupsController < ApplicationController
   before_filter :authenticate_administrator, except: :index
-  before_action :set_question_group, only: [:destroy, :results, :assign_to_user]
+  before_action :set_question_group, only: [:destroy, :update, :assign_to_user]
   respond_to :html, :js
   respond_to :json, only: :results
 
@@ -13,6 +13,11 @@ class QuestionGroupsController < ApplicationController
     @question_group = Rapidfire::QuestionGroup.new(question_group_params)
     @question_group.save
 
+    respond_with(@question_group, location: question_groups_url)
+  end
+
+  def update
+    @question_group.update_attributes(question_group_params)
     respond_with(@question_group, location: question_groups_url)
   end
 
