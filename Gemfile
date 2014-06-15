@@ -21,8 +21,8 @@ gem 'ejs'
 
 gem 'newrelic_rpm'
 
-gem 'carrierwave'
-gem "fog", "~> 1.3.1"
+gem "fog", "~> 1.3.1", require: "fog/aws/storage"
+gem "carrierwave"
 
 group :development do
   gem 'pry-remote', '~> 0.1.7'
