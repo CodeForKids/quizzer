@@ -1,42 +1,6 @@
-<div class="login-screen">
-  <div class="center-block text-center v-center">
-    <div class="content">
-      <div class="container">
-        <div class="row" style="margin-top:20px">
-          <%= image_tag('logo-white-text.png', height: '60px;') %>
+S3_KEY AKIAJLKECAUO2ZFL5GSQ
+S3_SECRET q+xkkzff9wC2ZQlF4lhreIbo94/GJ1v1+9MDMgpj
+S3_REGION us-west-2
+S3_BUCKET_NAME CFK_Quiz
+S3_ASSET_URL https://s3-eu-west-1.amazonaws.com
 
-          <h2>Change your password</h2>
-
-          <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-
-            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-
-              <hr class="colorgraph">
-              <%= devise_error_messages! %>
-              <%= f.hidden_field :reset_password_token %>
-
-              <div class="form-group no-margin">
-                <%= f.label :password, "New password" %><br />
-                <%= f.password_field :password, class: 'form-control', autofocus: true, autocomplete: "off" %>
-              </div>
-
-              <div class="form-group no-margin">
-                <%= f.label :password_confirmation, "Confirm new password" %><br />
-                <%= f.password_field :password_confirmation, class: 'form-control', autofocus: true, autocomplete: "off" %>
-              </div>
-
-              <br>
-
-              <div class="form-group no-margin">
-                <%= f.submit "Change my password", class: 'btn btn-primary' %><%= render "devise/shared/links" %>
-              </div>
-
-              <hr class="colorgraph">
-            <% end %>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>

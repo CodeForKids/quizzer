@@ -22,6 +22,7 @@ gem 'ejs'
 gem 'newrelic_rpm'
 
 gem 'carrierwave'
+gem "fog", "~> 1.3.1"
 
 group :development do
   gem 'pry-remote', '~> 0.1.7'
