@@ -8,7 +8,6 @@ CarrierWave.configure do |config|
     :region                => ENV['S3_REGION']
   }
   config.fog_directory  = ENV['S3_BUCKET_NAME']
-  config.fog_host       = 'http://quiz.codeforkids.ca'
   config.fog_public     = true                                    # optional, defaults to true
   config.fog_attributes = {'Cache-Control' => 'max-age=315576000'}  # optional, defaults to {}
 
