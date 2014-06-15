@@ -1,6 +1,6 @@
 <tr>
   <td>
-    <img src="<%= gravatar(user.email, { size: 40 })%>" alt="" class="center-block img-circle img-responsive">
+    <img src="<%=  image_for_user(user, { size: 40 })%>" alt="" class="center-block img-circle img-responsive">
   </td>
   <td>
     <%= link_to user.name, user_path(user) %>

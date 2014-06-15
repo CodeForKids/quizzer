@@ -28,6 +28,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(users_params)
+
     if @user.valid?
       redirect_to users_path, notice: "Created the user #{@user.name}"
     else
@@ -42,6 +43,7 @@ class UsersController < ApplicationController
   def update
     remove_blank_password
     remove_email if is_current_user? && !can_administer?
+    remove_avatar unless params[:remove_avatar].nil?
 
     if @user.update_attributes(users_params)
       redirect_to users_path, notice: "Updated the user #{@user.name}"
@@ -67,7 +69,7 @@ class UsersController < ApplicationController
   end
 
   def users_params
-    params.require(:user).permit(:first_name, :last_name, :password, :email)
+    params.require(:user).permit(:first_name, :last_name, :password, :email, :avatar)
   end
 
   def setup_user_profile(user)
@@ -94,4 +96,9 @@ class UsersController < ApplicationController
   def is_current_user?
     current_user.id.to_i == params[:id].to_i || can_administer?
   end
+
+  def remove_avatar
+    @user.remove_avatar!
+  end
+
 end

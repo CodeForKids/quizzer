@@ -21,6 +21,8 @@ gem 'ejs'
 
 gem 'newrelic_rpm'
 
+gem 'carrierwave'
+
 group :development do
   gem 'pry-remote', '~> 0.1.7'
   gem 'quiet_assets'

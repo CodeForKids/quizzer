@@ -2,10 +2,17 @@
 
   <div class="form-group">
     <%= f.error_notification %>
+
     <%= f.input :first_name, placeholder: 'First Name' %>
     <%= f.input :last_name, placeholder: 'Last Name' %>
     <%= f.input :email, placeholder: 'Email', disabled: !can_administer? %>
     <%= f.input :password, placeholder: 'Password' %>
+
+    <br>
+    <b>Avatar Image:</b> <%= f.file_field :avatar %>
+    <br>
+    <input type="checkbox" value="Remove avatar?" id="remove_avatar" name="remove_avatar"> &nbsp;Remove Avatar?</input>
+
   </div>
 
   <%= f.submit 'Save', class: 'btn btn-primary'  %>
