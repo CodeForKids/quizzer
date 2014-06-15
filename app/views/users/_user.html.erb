@@ -1,6 +1,6 @@
 <tr>
   <td>
-    <img src="<%=  image_for_user(user, { size: 40 })%>" alt="" class="center-block img-circle img-responsive">
+    <img src="<%=  image_for_user(user, { size: 40 })%>" alt="" style="max-width:40px; max-height:40px;" class="center-block img-circle img-responsive">
   </td>
   <td>
     <%= link_to user.name, user_path(user) %>

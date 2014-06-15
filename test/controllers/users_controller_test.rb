@@ -66,6 +66,17 @@ class UsersControllerTest < ActionController::TestCase
     assert_equal "Updated the user Julian John nadeau", flash[:notice]
   end
 
+  test 'should remove avatar' do
+    put :update, id: @admin, remove_avatar: "Remove Avatar?", user: { first_name: 'Julian John' }
+    assert_redirected_to users_path
+
+    assert assigns(:user)
+    user = assigns(:user)
+    assert_equal 'Julian John', user.first_name
+    assert_nil user.avatar.url
+    assert_equal "Updated the user Julian John nadeau", flash[:notice]
+  end
+
   test 'should fail to update user' do
     put :update, id: @admin, user: { email: '' }
     assert_redirected_to users_path

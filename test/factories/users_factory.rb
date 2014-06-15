@@ -4,6 +4,7 @@ FactoryGirl.define do
     last_name "nadeau"
     password "12345678"
     email "julian@codeforkids.ca"
+    avatar "234"
   end
 
   factory :kid, :class => "User" do
@@ -11,6 +12,7 @@ FactoryGirl.define do
     last_name "smith"
     password "12345678"
     email "bob@example.com"
+    avatar "234"
   end
 
   factory :kid2, :class => "User" do
@@ -18,5 +20,6 @@ FactoryGirl.define do
     last_name "smiths"
     password "12345678"
     email "bobbie@example.com"
+    avatar "234"
   end
 end
