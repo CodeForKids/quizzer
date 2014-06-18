@@ -28,7 +28,7 @@ setupSearch = (searchbox, table, textClass) ->
       element.html(text)
       if (text.toLowerCase().indexOf(valThis) > -1)
         $(this).show()
-        html = element.html().replace(valThis, "<b><u>#{valThis}</u></b>")
+        html = element.html().replace(valThis, "<b><u>#{valThis}</u></b> ")
         element.html(html)
       else
         $(this).hide()

@@ -22,7 +22,9 @@ class UsersControllerTest < ActionController::TestCase
   test 'get index' do
     get :index
     assert assigns(:users)
-    assert_equal 3, assigns(:users).count
+    assert_equal 2, assigns(:users).count
+    assert assigns(:admins)
+    assert_equal 1, assigns(:admins).count
   end
 
   test 'get show' do
