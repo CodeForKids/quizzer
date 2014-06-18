@@ -28,8 +28,11 @@ setupSearch = (searchbox, table, textClass) ->
       element.html(text)
       if (text.toLowerCase().indexOf(valThis) > -1)
         $(this).show()
-        html = element.html().replace(valThis, "<b><u>#{valThis}</u></b> ")
+        html = highlightWords(element.html(), valThis)
         element.html(html)
       else
         $(this).hide()
 
+highlightWords = (line, word) ->
+  regex = new RegExp( '(' + word + ')', 'i' );
+  return line.replace(regex, "<u><b>$1</b></u>" );
