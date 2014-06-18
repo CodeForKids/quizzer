@@ -18,15 +18,15 @@
             <div class="col-xs-12 col-sm-8">
               <h2><%= @user.name %></h2>
               <p><strong>Email: </strong> <a href="mailto:<%=@user.email%>"><%=@user.email%></a></p>
-              <% if can_administer? %>
+              <% if @user.can_administer? %>
                 <p><strong>Adminstrator</strong></p>
               <% end %>
 
               <% if @user == current_user || can_administer? %>
-                <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-default' %>
+                <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-default btn-sm' %>
               <% end %>
               <% if can_administer? %>
-                <%= link_to 'Delete User', user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete #{@user.name}'s user?" }, class: 'btn btn-danger' %>
+                <%= link_to 'Delete User', user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete #{@user.name}'s user?" }, class: 'btn btn-danger btn-sm' %>
               <% end %>
             </div>
 
@@ -67,7 +67,7 @@
 
     <div class="col-md-6">
         <h2>Quizzes Assigned
-        <% if can_administer? %><%= link_to 'Assign a Quiz', assign_quiz_path(@user), class: 'btn btn-default' %><% end %>
+        <% if can_administer? %><%= link_to 'Assign a Quiz', assign_quiz_path(@user), class: 'btn btn-default btn-sm' %><% end %>
         </h2>
 
         <% if @quiz_assignments.size > 0 %>
@@ -89,6 +89,7 @@
         </table>
 
         <% else %>
+          <br>
           <h4 class="text-center"><%= image_tag 'favicon.png'%><br>You have no quizzes currently assigned to you! Congrats!</h4>
         <% end %>
     </div>

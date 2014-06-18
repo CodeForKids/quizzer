@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   before_filter :set_user, except: [:index, :new, :create, :me]
 
   def index
-    @users = User.all
+    @admins = User.admins
+    @users = User.kids
   end
 
   def me

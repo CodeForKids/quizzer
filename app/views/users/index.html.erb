@@ -1,11 +1,27 @@
-<h2>
-  Users
-  <% if can_administer? %>
-    <div class="pull-right">
-      <%= link_to 'New User', new_user_path, class: 'btn btn-primary' %>
-    </div>
-  <% end %>
-</h2>
+<h2>Users</h2>
+
+<div class="pb search-wrapper">
+  <div class="col-xs-9 p0">
+    <input id="searchBox" class="form-control" placeholder="Search..."></input>
+  </div>
+  <div class="col-xs-3">
+    <%= link_to 'New User', new_user_path, class: 'btn btn-info pull-right' %>
+  </div>
+</div>
+
+<table class="table table-striped kids-table">
+  <colgroup>
+    <col></col>
+    <col width="45%"></col>
+  </colgroup>
+  <tbody>
+    <%= render @users %>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Admins</h2>
 <hr/>
 <table class="table table-striped">
   <colgroup>
@@ -13,6 +29,6 @@
     <col width="45%"></col>
   </colgroup>
   <tbody>
-    <%= render @users %>
+    <%= render @admins %>
   </tbody>
 </table>

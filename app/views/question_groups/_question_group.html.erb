@@ -1,9 +1,9 @@
-<tr id="question_group_<%= question_group.id %>">
+<tr id="question_group_<%= question_group.id %>" data-key="<%=question_group.name%>">
   <td>
     <% if can_administer? %>
-      <%= link_to question_group.name, question_group_questions_path(question_group) %>
+      <%= link_to question_group.name, question_group_questions_path(question_group), class: 'text' %>
     <% else %>
-      <%= question_group.name %>
+      <span class="text"><%= question_group.name %></span>
     <% end %>
     (<%= question_group.questions.count %> questions)
   </td>

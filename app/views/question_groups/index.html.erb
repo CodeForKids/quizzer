@@ -1,18 +1,26 @@
 <h2>
   Quizzes
-  <% if can_administer? %>
-    <div class="pull-right">
-      <%= render partial: 'new_quiz_modal' %>
-      <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#new-quiz">
-        New Quiz
-      </button>
+  <div class="pb pt search-wrapper">
+    <div class="p0 <% unless can_administer? %>col-xs-12<% else %>col-xs-10<% end %>">
+      <input id="searchBox" class="form-control" placeholder="Search..."></input>
     </div>
-  <% else %>
-    <small class="pull-right">This is a list of all quizzes, you can choose to do them if you want, but they are <b>not</b> assigned.</small>
-  <% end %>
+
+    <% if can_administer? %>
+      <div class="col-xs-2">
+        <%= render partial: 'new_quiz_modal' %>
+        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#new-quiz">
+          New Quiz
+        </button>
+      </div>
+    <% else %>
+      <div class="col-xs-12 text-center">
+        <p><small>This is a list of all quizzes, you can choose to do them if you want, but they are <b>not</b> assigned.</small></p>
+      </div>
+    <% end %>
+  </div>
 </h2>
 <hr/>
-<table class="table table-striped">
+<table class="table table-striped quizzes-table">
   <colgroup>
     <col></col>
     <col width="45%"></col>

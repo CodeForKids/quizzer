@@ -1,9 +1,9 @@
-<tr>
+<tr data-key="<%=user.name.downcase%>">
   <td>
     <img src="<%=  image_for_user(user, { size: 40 })%>" alt="" style="max-width:40px; max-height:40px;" class="center-block img-circle img-responsive">
   </td>
   <td>
-    <%= link_to user.name, user_path(user) %>
+    <%= link_to user.name, user_path(user), class: 'text' %>
   </td>
   <td>
     <%= user.email %>
