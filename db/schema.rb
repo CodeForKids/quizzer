@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140615003847) do
+ActiveRecord::Schema.define(version: 20140620030314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20140615003847) do
   create_table "rapidfire_questions", force: true do |t|
     t.integer  "question_group_id"
     t.string   "type"
-    t.string   "question_text"
+    t.text     "question_text"
     t.integer  "position"
     t.text     "answer_options"
     t.text     "validation_rules"
