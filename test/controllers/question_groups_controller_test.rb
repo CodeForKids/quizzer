@@ -14,6 +14,7 @@ class QuestionGroupsControllerTest < ActionController::TestCase
     get :index
     assert assigns(:question_groups)
     assert_equal 2, assigns(:question_groups).count
+    assert_equal 1, assigns(:question_groups).first[1].size
   end
 
   test 'post create' do
@@ -30,6 +31,20 @@ class QuestionGroupsControllerTest < ActionController::TestCase
     assert assigns(:question_group)
   end
 
+  test 'post assign Quiz' do
+    assert_difference->{QuizAssignment.count} do
+      post :assign_to_user, user_id: @kid, id: @question_group
+    end
+    assert_redirected_to user_path(@kid)
+  end
+
+  test 'post assign Quiz group' do
+    assert_difference->{QuizAssignment.count} do
+      post :assign_group_to_user, user_id: @kid, group_id: @question_group.quiz_group_id
+    end
+    assert_redirected_to user_path(@kid)
+  end
+
   #Admin
 
   test 'kids should be able to get index' do
@@ -37,6 +52,7 @@ class QuestionGroupsControllerTest < ActionController::TestCase
     get :index
     assert assigns(:question_groups)
     assert_equal 2, assigns(:question_groups).count
+    assert_equal 1, assigns(:question_groups).first[1].size
   end
 
   test 'kids should not be able to post create' do

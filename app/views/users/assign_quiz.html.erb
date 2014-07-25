@@ -17,7 +17,19 @@
         <% @question_groups.each do |question_group| %>
           <tr>
             <td><b><%= question_group.name %></b></td>
-            <td><%= button_to 'Assign Quiz', assign_to_user_path(question_group, @user), method: :post, class: 'btn btn-primary' %></td>
+            <td><%= button_to 'Assign Quiz', assign_to_user_question_group_path(question_group, @user), method: :post, class: 'btn btn-primary' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <h2>Available Groups for <%= @user.name %></h2>
+    <table class="table table-hover">
+      <tbody>
+        <% QuizGroup.all.each do |group| %>
+          <tr>
+            <td><b><%= group.name %></b></td>
+            <td><%= button_to 'Assign Group', assign_group_question_groups_path(@user, group), method: :post, class: 'btn btn-primary' %></td>
           </tr>
         <% end %>
       </tbody>

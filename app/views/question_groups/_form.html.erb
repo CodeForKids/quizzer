@@ -2,7 +2,10 @@
   <div class="form-group">
     <%= f.error_notification %>
     <%= f.input :name, placeholder: 'Survey Name' %>
+    <%= f.select :quiz_group_id, QuizGroup.all.map { |g| [g.name,g.id] }, {include_blank: true}, {class:'form-control'} %>
   </div>
-
-  <%= f.submit 'Save', class: 'btn btn-primary'  %>
+  <br>
+  <div class="form-group">
+    <%= f.submit 'Save', class: 'btn btn-primary'  %>
+  </div>
 <% end %>

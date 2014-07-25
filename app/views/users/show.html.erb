@@ -67,7 +67,7 @@
 
     <div class="col-md-6">
         <h2>Quizzes Assigned
-        <% if can_administer? %><%= link_to 'Assign a Quiz', assign_quiz_path(@user), class: 'btn btn-default btn-sm' %><% end %>
+        <% if can_administer? %><%= link_to 'Assign a Quiz', assign_quiz_user_path(@user), class: 'btn btn-default btn-sm' %><% end %>
         </h2>
 
         <% if @quiz_assignments.size > 0 %>

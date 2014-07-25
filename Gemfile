@@ -25,12 +25,7 @@ gem "fog", "~> 1.3.1", require: "fog/aws/storage"
 gem "carrierwave"
 
 group :development do
-  gem 'pry-remote', '~> 0.1.7'
   gem 'quiet_assets'
-end
-
-group :production do
-  gem 'rails_12factor'
 end
 
 group :test do
@@ -40,5 +35,5 @@ group :test do
 end
 
 group :development, :test do
-  gem 'debugger'
+  gem 'pry-remote', '~> 0.1.7'
 end

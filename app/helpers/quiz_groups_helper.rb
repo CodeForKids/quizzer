@@ -1,0 +1,2 @@
+module QuizGroupsHelper
+end

@@ -5,7 +5,7 @@ class QuestionGroupsController < ApplicationController
   respond_to :json, only: :results
 
   def index
-    @question_groups = Rapidfire::QuestionGroup.all
+    @question_groups = Rapidfire::QuestionGroup.all.group_by(&:quiz_group_id)
     respond_with(@question_groups)
   end
 
@@ -36,9 +36,18 @@ class QuestionGroupsController < ApplicationController
     end
   end
 
+  def assign_group_to_user
+    @user = User.find(params[:user_id])
+    @group = QuizGroup.find(params[:group_id])
+    @group.quizzes.each do |quiz|
+      QuizAssignment.create({user: @user, question_group: quiz, source: 'Tutor'})
+    end
+    redirect_to user_path(@user)
+  end
+
   private
   def question_group_params
-    params.require(:question_group).permit(:name)
+    params.require(:question_group).permit(:name, :quiz_group_id)
   end
 
   def set_question_group

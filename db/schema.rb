@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140620030314) do
+ActiveRecord::Schema.define(version: 20140725051849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 20140620030314) do
     t.datetime "updated_at"
     t.string   "source",            default: ""
   end
+
+  create_table "quiz_groups", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "quiz_groups", ["name"], name: "index_quiz_groups_on_name", using: :btree
 
   create_table "rapidfire_answer_groups", force: true do |t|
     t.integer  "question_group_id"
@@ -50,8 +58,9 @@ ActiveRecord::Schema.define(version: 20140620030314) do
 
   create_table "rapidfire_question_groups", force: true do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "quiz_group_id"
   end
 
   create_table "rapidfire_questions", force: true do |t|

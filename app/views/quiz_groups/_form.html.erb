@@ -1,0 +1,17 @@
+<%= form_for(@quiz_group) do |f| %>
+  <div class="form-group">
+    <%- if @quiz_group.errors.any? %>
+    <ul>
+    <%- @quiz_group.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+    <%= f.text_field :name, placeholder: 'Group Name', class: 'form-control' %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.submit 'Save', class: 'btn btn-primary'  %>
+  </div>
+<% end %>
+
