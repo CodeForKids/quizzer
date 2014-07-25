@@ -21,15 +21,16 @@
   </div>
 </h2>
 <hr/>
-<table class="table table-striped quizzes-table">
-  <colgroup>
-    <col></col>
-    <col width="45%"></col>
-  </colgroup>
-  <tbody>
-    <% @question_groups.each do |group_name, group| %>
-      <h3><% if group_name %><%= QuizGroup.find(group_name).name %><% else %>Other<% end %></h3>
+
+<% @question_groups.each do |group_name, group| %>
+  <h3><% if group_name %><%= QuizGroup.find(group_name).name %><% else %>Other<% end %></h3>
+  <table class="table table-striped quizzes-table">
+      <colgroup>
+      <col></col>
+      <col width="45%"></col>
+    </colgroup>
+    <tbody>
       <%= render partial: "question_group", collection: group %>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+<% end %>
