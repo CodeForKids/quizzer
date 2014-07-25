@@ -22,15 +22,32 @@
 </h2>
 <hr/>
 
-<% @question_groups.each do |group_name, group| %>
-  <h3><% if group_name %><%= QuizGroup.find(group_name).name %><% else %>Other<% end %></h3>
-  <table class="table table-striped quizzes-table">
-      <colgroup>
-      <col></col>
-      <col width="45%"></col>
-    </colgroup>
-    <tbody>
-      <%= render partial: "question_group", collection: group %>
-    </tbody>
-  </table>
-<% end %>
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+
+    <% @question_groups.each_with_index do |(group_name, group), index| %>
+      <% name = QuizGroup.find(group_name).name || Other %>
+      <div class="panel-heading collapse-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#<%=name.downcase.parameterize%>">
+            <i class="glyphicon glyphicon-chevron-right"></i>&nbsp; <%= name %>
+          </a>
+        </h4>
+      </div>
+      <div id="<%=name.downcase.parameterize%>" class="panel-collapse collapse <% if index == 0 %>in<% end %>">
+        <div>
+          <table class="table table-striped quizzes-table">
+              <colgroup>
+              <col></col>
+              <col width="45%"></col>
+            </colgroup>
+            <tbody>
+              <%= render partial: "question_group", collection: group %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>
