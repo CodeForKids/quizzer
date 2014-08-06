@@ -14,7 +14,7 @@
         <strong>Other Optional Fields</strong>
       </h4>
       <hr/>
-      <%= f.input :answer_presence, as: :boolean %>
+      <%= f.input :answer_presence, as: :boolean, :input_html => { :checked => true } %>
       <div class="row-fluid">
         <div class="span6">
           <%= f.input :answer_minimum_length %>

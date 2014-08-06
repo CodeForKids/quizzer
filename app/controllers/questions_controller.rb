@@ -31,6 +31,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
+    Rapidfire::Answer.where(question_id: @question.id).delete_all
     respond_with(@question, location: index_location)
   end
 
