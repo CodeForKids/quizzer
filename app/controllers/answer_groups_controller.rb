@@ -12,11 +12,11 @@ class AnswerGroupsController < ApplicationController
 
   def create
     @answer_group_builder = Rapidfire::AnswerGroupBuilder.new(answer_group_params)
-
     if @answer_group_builder.save
       mark_question_group_as_complete
       redirect_to question_group_answer_group_path(@answer_group_builder.question_group, @answer_group_builder.to_model)
     else
+      @answer_group_builder.answers.each { |a| a.question.validate_answer(a) }
       render :new
     end
   end

@@ -1,7 +1,7 @@
 <%- if answer.errors.any? %>
   <ul>
     <%- answer.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+      <li><%= message.gsub("Answer text", "Question") %></li>
     <% end %>
   </ul>
 <% end %>

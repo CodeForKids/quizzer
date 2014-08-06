@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/jules2689/rapidfire
-  revision: 2429d92c20baf03ddf12f1dbd334caa7d525eed4
+  revision: 3fcfb9d645f760276d22e5f5e27714d95ef7ba69
   specs:
     rapidfire (1.2.0)
       active_model_serializers (~> 0.8.1)
