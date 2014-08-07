@@ -17,7 +17,11 @@ module QuestionHelper
 
   def quiz_correct_widget(question_group)
     answer_groups = @question_group.answer_groups
-    data = (answer_groups.collect { |ag| ag.percent_correct }.inject(:+)/answer_groups.count).round(2)
+    if answer_groups > 0
+      data = ( answer_groups.collect { |ag| ag.percent_correct }.inject(:+) / answer_groups.count).round(2)
+    else
+      data = 0
+    end
     DashboardWidget.new('', 'single_text', {}, { "Average mark on Quiz" => data.to_s + "%" })
   end
 
