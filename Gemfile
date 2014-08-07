@@ -13,6 +13,7 @@ gem 'jquery-rails'
 
 # App Specific Gems
 gem 'bootstrap-sass', '~> 3.1.1'
+gem 'bootstrap_widgets', git: 'git://github.com/jules2689/bootstrap_widgets'
 
 gem 'rapidfire', git: 'git://github.com/jules2689/rapidfire'
 gem 'devise', '~> 3.0.4'

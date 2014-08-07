@@ -1,12 +1,13 @@
-//= require jquery
-//= require jquery_ujs
-//= require underscore
-//= require bootstrap
-//= require chart
-//= require_tree ./templates
-//= require result-chart
-//= require toast
-//= require confirmation
+#= require jquery
+#= require jquery_ujs
+#= require underscore
+#= require bootstrap
+#= require chart
+#= require_tree ./templates
+#= require result-chart
+#= require toast
+#= require confirmation
+#= require bootstrap_widgets
 
 $(document).on "ready page:change", ->
  resize()

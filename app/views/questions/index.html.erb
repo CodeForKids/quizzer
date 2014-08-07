@@ -16,6 +16,7 @@
   </div>
 </h2>
 <hr/>
+
 <table class="table table-striped">
   <colgroup>
     <col></col>
@@ -26,6 +27,7 @@
       <th>Question</th>
       <th>Type</th>
       <th>Answer</th>
+      <th>Stats</th>
       <th>&nbsp;</th>
     </tr>
   </thead>
@@ -33,3 +35,6 @@
     <%= render partial: "question", collection: @questions %>
   </tbody>
 </table>
+
+<%= widget quiz_correct_widget(@question_group) %>
+<%= widget distribution_widget(@question_group) %>

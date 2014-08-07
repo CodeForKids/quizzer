@@ -2,6 +2,7 @@
   <td><%= question.question_text %></td>
   <td><%= question.type.gsub('Rapidfire::Questions::','') %></td>
   <td><%= question.answer %></td>
+  <td><%= num_correct(question) %></td>
   <td>
     <ul class="list-inline pull-right">
       <li>
