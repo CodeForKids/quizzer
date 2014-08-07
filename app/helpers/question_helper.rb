@@ -31,8 +31,8 @@ module QuestionHelper
   def distribution_widget(question_group)
     widget = DashboardWidget.new('Mark Distribution', 'line_graph', {})
     answer_groups = @question_group.answer_groups
-    user_name = ag.user ? ag.user.name : ""
-    data = answer_groups.collect { |ag| ["#{user_name}-#{ag.id}", ag.percent_correct] }
+
+    data = answer_groups.collect { |ag| user_name = ag.user ? ag.user.name : ""; ["#{user_name}-#{ag.id}", ag.percent_correct] }
     data.sort! { |a,b| a[1] <=> b[1] }
     data.each do |num|
       widget.add_data_pair(num[0], num[1])
