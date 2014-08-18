@@ -25,6 +25,7 @@ gem 'newrelic_rpm'
 gem "fog", "~> 1.3.1", require: "fog/aws/storage"
 gem "carrierwave"
 gem "airbrake"
+gem "lograge"
 
 group :development do
   gem 'quiet_assets'

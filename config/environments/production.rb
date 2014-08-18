@@ -81,4 +81,10 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   config.action_mailer.default_url_options = { :host => 'quiz.codeforkids.ca' }
+
+  config.lograge.enabled = true
+  config.lograge.ignore_actions = ['application#ping']
+  config.lograge.custom_options = lambda do |event|
+    {:time => event.time, :remote_ip => event.payload[:remote_ip], :uuid => event.payload[:uuid]}
+  end
 end
