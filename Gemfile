@@ -27,6 +27,10 @@ gem "carrierwave"
 gem "airbrake"
 gem "lograge"
 
+group :production do
+  gem 'remote_syslog_logger'
+end
+
 group :development do
   gem 'quiet_assets'
 end
