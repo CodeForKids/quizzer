@@ -15,6 +15,20 @@
 
  @import "bootstrap";
 
+ .navbar-no-bg {
+    background: none;
+    float: left;
+    width: 100%;
+    .navbar-nav > li > a {
+      color: #fff;
+      font-weight: 500;
+      font-size: 110%;
+      &:hover {
+        color: #000100;
+      }
+    }
+  }
+
  .collapse-heading { border-bottom: 1px solid #CECECE !important; }
 
  .login-screen {
@@ -23,7 +37,7 @@
    width: 100%;
    background-size: cover;
  }
- .login-screen-container {
+ .login-screen-container, .jumbotron {
   background: rgba(0, 1, 0, 0.45);
  }
 
@@ -44,11 +58,10 @@
 .question label { display: block !important; }
 .navbar { margin-bottom: 0px; border-radius: 0px; }
 .jumbotron {
-  background: image-url("background.png") top center;
-  background-size: cover;
   color: #fff;
   width: 100%;
 }
+.jumbotron-container { background: #000100 image-url("background.png") top center; background-size: cover; }
 .no-margin { margin: 0px !important; }
 
 .checkbox input[type="checkbox"] { margin-left: 0px; }
