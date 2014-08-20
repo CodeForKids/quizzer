@@ -1,4 +1,4 @@
-<div class="login-screen">
+<div class="login-screen-container">
   <div class="center-block text-center v-center">
     <div class="content">
       <div class="container">
@@ -14,13 +14,12 @@
               <hr class="colorgraph">
 
               <div class="form-group no-margin">
-                <%= f.label :email %><br />
-                <%= f.email_field :email, class: 'form-control', autofocus: true %>
+                <%= f.email_field :email, class: 'form-control input-lg', autofocus: true, placeholder: "Email Address" %>
               </div>
 
               <br>
               <div class="form-group no-margin">
-                <%= f.submit "Send me reset password instructions", class: 'btn btn-primary' %>
+                <%= f.submit "Send me reset password instructions", class: 'btn btn-primary btn-lg' %>
                 <%= render "devise/shared/links" %>
               </div>
 

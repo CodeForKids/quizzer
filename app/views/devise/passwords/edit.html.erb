@@ -1,4 +1,4 @@
-<div class="login-screen">
+<div class="login-screen-container">
   <div class="center-block text-center v-center">
     <div class="content">
       <div class="container">
@@ -16,19 +16,17 @@
               <%= f.hidden_field :reset_password_token %>
 
               <div class="form-group no-margin">
-                <%= f.label :password, "New password" %><br />
-                <%= f.password_field :password, class: 'form-control', autofocus: true, autocomplete: "off" %>
+                <%= f.password_field :password, class: 'form-control input-lg', autofocus: true, autocomplete: "off", placeholder: "New Password" %>
               </div>
 
               <div class="form-group no-margin">
-                <%= f.label :password_confirmation, "Confirm new password" %><br />
-                <%= f.password_field :password_confirmation, class: 'form-control', autofocus: true, autocomplete: "off" %>
+                <%= f.password_field :password_confirmation, class: 'form-control input-lg', autofocus: true, autocomplete: "off", placeholder: "Repeat New Password" %>
               </div>
 
               <br>
 
               <div class="form-group no-margin">
-                <%= f.submit "Change my password", class: 'btn btn-primary' %><%= render "devise/shared/links" %>
+                <%= f.submit "Change my password", class: 'btn btn-primary btn-lg' %><%= render "devise/shared/links" %>
               </div>
 
               <hr class="colorgraph">
