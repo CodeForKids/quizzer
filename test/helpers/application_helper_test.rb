@@ -9,7 +9,7 @@ class ApplicationHelperTest < ActionView::TestCase
   end
 
   test 'gravatar' do
-    assert_equal 'http://www.gravatar.com/avatar.php?gravatar_id=7d88a4641924c30ad59ba00b200bbd5f', gravatar(@admin.email)
+    assert_equal 'https://www.gravatar.com/avatar.php?gravatar_id=7d88a4641924c30ad59ba00b200bbd5f', gravatar(@admin.email)
   end
 
   test 'checkbox_checked?' do
