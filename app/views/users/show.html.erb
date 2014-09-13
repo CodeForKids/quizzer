@@ -90,8 +90,60 @@
 
         <% else %>
           <br>
-          <h4 class="text-center"><%= image_tag 'favicon.png'%><br>You have no quizzes currently assigned to you! Congrats!</h4>
+          <h4 class="text-center"><%= image_tag 'favicon.png'%><br>You have no quizzes currently assigned to you, congrats!</h4>
         <% end %>
+    </div>
+
+    <div class="col-md-12 pb">
+
+      <h2>Getting Started at Home</h2>
+
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="active"><a href="#html" data-toggle="tab">HTML/CSS</a></li>
+        <li><a href="#ruby" data-toggle="tab">Ruby</a></li>
+      </ul>
+
+      <div class="tab-content">
+
+        <div class="tab-pane active" id="html">
+          <div class="alert alert-info">
+            <a href="https://wiki.codeforkids.ca/category/tutoring-and-private-sessions/pages/html-and-css-course-overview" target="_blank">Get started by reading this page.</a>
+          </div>
+
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <td>Use this website:</td>
+                <td><a href="http://shiftedit.net" target="_blank">ShiftEdit</a></td>
+              </tr>
+              <tr>
+                <td>ShiftEdit's username:</td>
+                <td><%= ENV["shiftedit_user"] %></td>
+              </tr>
+              <tr>
+                <td>ShiftEdit's password:</td>
+                <td><%= ENV["shiftedit_password"] %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tab-pane" id="ruby">
+          <div class="alert alert-info">
+            <a href="https://wiki.codeforkids.ca/category/tutoring-and-private-sessions/pages/introduction-to-ruby-course-overview" target="_blank">Get started by reading this page.</a>
+          </div>
+
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <td>Use this website:</td>
+                <td><a href="http://repl.codeforkids.ca" target="_blank">Code For Kids' Repl</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
     </div>
 
   </div>
