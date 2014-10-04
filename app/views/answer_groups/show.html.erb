@@ -23,7 +23,7 @@
      <tr>
       <td><b><%= answer.question.question_text %></b></td>
       <td><%= answer.answer_text %></td>
-      <td><% if answer.correct? %>√<%else%>X<% end %></td>
+      <td><% if answer.has_no_answer? %>N/A<% elsif answer.correct? %>√<%else%>X<% end %></td>
       <td><%= answer.question.answer %></td>
     </tr>
     <% end %>
